@@ -122,12 +122,13 @@ namespace PostFinanceCheckout.Client
             if (postBody != null) // http body (model or byte[]) parameter
             {
                 request.AddBody(postBody, contentType);
-            }
 
-            if (contentType != null)
-            {
-                request.AddHeader("Content-Type", contentType);
-            }
+		// Ensure a Content-Type request header if there is a http body
+            	if (contentType != null)
+            	{
+                    request.AddHeader("Content-Type", contentType);
+            	}
+	    }
 
             return request;
         }
